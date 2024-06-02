@@ -1,0 +1,12 @@
+
+=== Org Description
+
+Access Token     00D3O0000008pQf!AQoAQGbsONWrHo5PrS5mokywaOrKEyPBU1Sbrolf3FNJJpre72PQy7K08tfbf9G2fqhRvUxzaxK5rLTBmuc8UFtggrLKrHvD
+Alias            IntegratedOrg
+Api Version      60.0
+Client Id        PlatformCLI
+Connected Status Connected
+Id               00D3O0000008pQfUAI
+Instance Url     https://cw-inn--inta.sandbox.my.salesforce.com
+Sfdx Auth Url    force://PlatformCLI::5Aep861wJWHSPwPUn1VswFFiwWjhFaKfgdKmJXuw7_cvsMO4r7aWA.zAAtD.UiQ5uWE0IDCnM6L_RAX8fExAiIq@cw-inn--inta.sandbox.my.salesforce.com
+Username         245775@edu.p.lodz.pl.int
