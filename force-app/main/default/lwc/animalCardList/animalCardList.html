@@ -1,12 +1,12 @@
 <template>
     <lightning-card title="Animals" icon-name="utility:animal_and_nature">
         <div class="filters">
-            <lightning-combobox 
-                name="breeds" 
-                label="Breed" 
-                value={breedFilter} 
+            <lightning-combobox
+                name="breeds"
+                label="Breed"
+                value={breedFilter}
                 placeholder="Select a Breed"
-                options={breeds} 
+                options={breeds}
                 class="combobox-custom"
                 onchange={handleBreedChange}>
             </lightning-combobox>
@@ -44,6 +44,9 @@
             <lightning-button variant="neutral" label="Reset Filters" title="Reset Filters" onclick={resetFilters} class="reset-button"></lightning-button>
 
         </div>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+        </template>
 
         <template if:true={animals}>
             <template if:false={isSearchNotAvailable}>

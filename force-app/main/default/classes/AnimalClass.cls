@@ -12,20 +12,7 @@ public class AnimalClass {
 
         if (!String.isBlank(ageFilter)) 
         {
-            String ageCondition;
-            if (ageFilter == 'do 5 lat') 
-            {
-                ageCondition = 'Age__c <= 5';
-            } 
-            else if (ageFilter == 'do 10 lat') 
-            {
-                ageCondition = 'Age__c <= 10';
-            } 
-            else 
-            {
-                ageCondition = 'Age__c > 10';
-            }
-            filters.add(ageCondition);
+            filters.add(ageFilter);
         }
 
         if (!String.isBlank(sexFilter)) 
@@ -46,37 +33,30 @@ public class AnimalClass {
     }
 
     @AuraEnabled
-    public static List<String> getBreeds() 
+    public static List<Map<String, String>> getBreeds() 
     {
-        Set<String> breedSet = new Set<String>();
-        for (Animal__c animal : [SELECT Breed__c FROM Animal__c]) 
+        List<Map<String, String>> breeds = new List<Map<String, String>>();
+        Schema.DescribeFieldResult field = Animal__c.Breed__c.getDescribe();
+        List<Schema.PicklistEntry> pickListVal = field.getPicklistValues();
+        for (Schema.PicklistEntry picklist : pickListVal) 
         {
-            if (!String.isBlank(animal.Breed__c)) 
-            {
-                breedSet.add(animal.Breed__c);
-            }
+            breeds.add(new Map<String, String>{
+                'label' => picklist.getLabel(),
+                'value' => picklist.getValue()
+            });
         }
-        return new List<String>(breedSet);
+        return breeds;
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<Map<String, String>> getShelters() {
-        List<Map<String, String>> shelters = new List<Map<String, String>>();
-        Set<Id> shelterIds = new Set<Id>();
-        
-        for (Animal__c animal : [SELECT Shelter__c FROM Animal__c WHERE Shelter__c != NULL]) 
+    public static List<Object> getShelters() 
+    {
+        List<Object> shelters = new List<Object>();
+        for (AggregateResult ar : [SELECT Shelter__r.Name shelterName FROM Animal__c WHERE Shelter__r.Name != null GROUP BY Shelter__r.Name]) 
         {
-            shelterIds.add(animal.Shelter__c);
+            String shelterName = (String)ar.get('shelterName');
+            shelters.add(new Map<String, String>{'label' => shelterName, 'value' => shelterName});
         }
-        
-        for (Shelter__c shelter : [SELECT Id, Name FROM Shelter__c WHERE Id IN :shelterIds]) 
-        {
-            shelters.add(new Map<String, String>{
-                'label' => shelter.Name,
-                'value' => shelter.Name
-            });
-        }
-        
         return shelters;
     }
 }

@@ -3,14 +3,13 @@ import getAnimals from '@salesforce/apex/AnimalClass.getAnimals';
 import getBreeds from '@salesforce/apex/AnimalClass.getBreeds';
 import getShelters from '@salesforce/apex/AnimalClass.getShelters';
 
-export default class AnimalCardList extends LightningElement 
-{
+export default class AnimalCardList extends LightningElement {
     @track animals;
     @track breeds = [];
     @track ages = [
-        { label: 'do 5 lat', value: 'do 5 lat' },
-        { label: 'do 10 lat', value: 'do 10 lat' },
-        { label: 'powyżej 10 lat', value: 'powyżej 10 lat' }
+        { label: 'Up to 5 years', value: 'Age__c <= 5' },
+        { label: 'Up to 10 years', value: 'Age__c <= 10' },
+        { label: 'Over 10 years', value: 'Age__c > 10' }
     ];
     @track sexes = [
         { label: 'Male', value: 'Male' },
@@ -23,12 +22,21 @@ export default class AnimalCardList extends LightningElement
     @track sexFilter = '';
     @track shelterFilter = '';
     @track isSearchNotAvailable = false;
+    @track isLoading = false; 
 
-    connectedCallback() 
-    {
-        this.loadBreeds();
-        this.loadShelters();
-        this.loadAnimals();
+    connectedCallback() {
+        this.isLoading = true; 
+        Promise.all([
+            this.loadBreeds(),
+            this.loadShelters(),
+            this.loadAnimals()
+        ])
+        .catch(error => {
+            this.error = error;
+        })
+        .finally(() => {
+            this.isLoading = false; 
+        });
     }
 
     handleBreedChange(event) 
@@ -49,32 +57,39 @@ export default class AnimalCardList extends LightningElement
         this.loadAnimals();
     }
 
-    handleShelterChange(event) 
+    handleShelterChange(event)
     {
         this.shelterFilter = event.target.value;
         this.loadAnimals();
     }
 
-    loadAnimals() {
+    loadAnimals() 
+    {
+        this.isLoading = true; 
         getAnimals({ breedFilter: this.breedFilter, ageFilter: this.ageFilter, sexFilter: this.sexFilter, shelterFilter: this.shelterFilter })
             .then(result => {
                 this.animals = result;
-                if (this.animals.length > 0) {
+                if (this.animals.length > 0) 
+                {
                     this.isSearchNotAvailable = false;
-                } else {
+                } else 
+                {
                     this.isSearchNotAvailable = true;
                 }
             })
             .catch(error => {
                 this.isSearchNotAvailable = false;
                 this.error = error;
+            })
+            .finally(() => {
+                this.isLoading = false; 
             });
     }
 
     loadBreeds() {
-        getBreeds()
+        return getBreeds()
             .then(result => {
-                this.breeds = result.map(breed => ({ label: breed, value: breed }));
+                this.breeds = result;
             })
             .catch(error => {
                 this.error = error;
@@ -82,7 +97,7 @@ export default class AnimalCardList extends LightningElement
     }
 
     loadShelters() {
-        getShelters()
+        return getShelters()
             .then(result => {
                 this.shelters = result;
             })
@@ -90,12 +105,16 @@ export default class AnimalCardList extends LightningElement
                 this.error = error;
             });
     }
-    
+
     resetFilters() {
+        this.isLoading = true; 
         this.breedFilter = '';
         this.ageFilter = '';
         this.sexFilter = '';
         this.shelterFilter = '';
-        this.loadAnimals();
+        this.loadAnimals()
+            .finally(() => {
+                this.isLoading = false; 
+            });
     }
 }

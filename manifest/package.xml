@@ -20,7 +20,6 @@
 		<members>Adoption__c.Amount__c</members>
 		<members>Adoption__c.Contact__c</members>
 		<members>Animal__c.Age__c</members>
-		<members>Animal__c.Breed__c</members>
 		<members>Animal__c.Date_of_admission__c</members>
 		<members>Animal__c.Description__c</members>
 		<members>Animal__c.Dislikes__c</members>
