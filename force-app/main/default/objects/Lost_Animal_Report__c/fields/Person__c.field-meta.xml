@@ -4,7 +4,7 @@
     <deleteConstraint>Restrict</deleteConstraint>
     <description>Person reporting a missing animal.</description>
     <externalId>false</externalId>
-    <label>Person</label>
+    <label>Reporting person</label>
     <referenceTo>Person__c</referenceTo>
     <relationshipLabel>Lost Animal Reports</relationshipLabel>
     <relationshipName>Lost_Animal_Reports</relationshipName>

@@ -1,0 +1,83 @@
+<template>
+    <lightning-card title="Animals" icon-name="utility:animal_and_nature">
+        <div class="filters">
+            <lightning-combobox
+                name="breeds"
+                label="Breed"
+                value={breedFilter}
+                placeholder="Select a Breed"
+                options={breeds}
+                class="combobox-custom"
+                onchange={handleBreedChange}>
+            </lightning-combobox>
+
+            <lightning-combobox 
+                name="ages" 
+                label="Age" 
+                value={ageFilter} 
+                placeholder="Select an Age"
+                options={ages} 
+                class="combobox-custom"
+                onchange={handleAgeChange}>
+            </lightning-combobox>
+
+            <lightning-combobox
+                name="sexes"
+                label="Sex"
+                value={sexFilter}
+                placeholder="Select a Sex"
+                options={sexes}
+                class="combobox-custom"
+                onchange={handleSexChange}>
+            </lightning-combobox>
+
+            <lightning-combobox 
+                name="shelters" 
+                label="Shelter" 
+                value={shelterFilter} 
+                placeholder="Select a Shelter"
+                options={shelters} 
+                class="combobox-custom"
+                onchange={handleShelterChange}>
+            </lightning-combobox>
+
+            <lightning-button variant="neutral" label="Reset Filters" title="Reset Filters" onclick={resetFilters} class="reset-button"></lightning-button>
+
+        </div>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+        </template>
+
+        <template if:true={animals}>
+            <template if:false={isSearchNotAvailable}>
+                <div class="animal-cards-container">
+                    <template for:each={animals} for:item="animalsdetails">
+                        <div key={animalsdetails.Id} class="animal-card-wrapper">
+                            <div class="animal-card">
+                                <div class="animal-image-container">
+                                    <img src={animalsdetails.Photo__c} class="animal-image" alt="animal" />
+                                </div>
+                                <div class="animal-details">
+                                    <h2>{animalsdetails.Name}</h2>
+                                    <p>Age: {animalsdetails.Age__c}</p>
+                                    <p>Sex: {animalsdetails.Sex__c}</p>
+                                    <p>Breed: {animalsdetails.Breed__c}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            
+            <template if:true={isSearchNotAvailable}>
+                <div class="no-find-result">
+                    We didn't find any result ...
+                </div>
+            </template>
+
+            <template if:true={error}>
+                Error occurred during loading animals
+            </template>
+        </template>
+    </lightning-card>
+</template>

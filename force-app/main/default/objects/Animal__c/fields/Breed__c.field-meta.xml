@@ -3,9 +3,57 @@
     <fullName>Breed__c</fullName>
     <externalId>false</externalId>
     <label>Breed</label>
-    <length>50</length>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Labrador Retriever</fullName>
+                <default>false</default>
+                <label>Labrador Retriever</label>
+            </value>
+            <value>
+                <fullName>German Shepherd</fullName>
+                <default>false</default>
+                <label>German Shepherd</label>
+            </value>
+            <value>
+                <fullName>Golden Retriever</fullName>
+                <default>false</default>
+                <label>Golden Retriever</label>
+            </value>
+            <value>
+                <fullName>Bulldog</fullName>
+                <default>false</default>
+                <label>Bulldog</label>
+            </value>
+            <value>
+                <fullName>Beagle</fullName>
+                <default>false</default>
+                <label>Beagle</label>
+            </value>
+            <value>
+                <fullName>Siamese</fullName>
+                <default>false</default>
+                <label>Siamese</label>
+            </value>
+            <value>
+                <fullName>Maine Coon</fullName>
+                <default>false</default>
+                <label>Maine Coon</label>
+            </value>
+            <value>
+                <fullName>Persian</fullName>
+                <default>false</default>
+                <label>Persian</label>
+            </value>
+            <value>
+                <fullName>Bengal</fullName>
+                <default>false</default>
+                <label>Bengal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>

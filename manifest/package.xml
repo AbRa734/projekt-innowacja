@@ -2,7 +2,11 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>AdoptionTriggerHelper</members>
+		<members>AnimalClass</members>
 		<members>EmailManager</members>
+		<members>HoursController</members>
+		<members>MissingAnimals</members>
+		<members>mapController</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -15,33 +19,23 @@
 	</types>
 	<types>
 		<members>Adoption__c.Amount__c</members>
-		<members>Adoption__c.Animal__c</members>
 		<members>Adoption__c.Contact__c</members>
-		<members>Adoption__c.Status__c</members>
 		<members>Animal__c.Age__c</members>
-		<members>Animal__c.Breed__c</members>
 		<members>Animal__c.Date_of_admission__c</members>
 		<members>Animal__c.Description__c</members>
 		<members>Animal__c.Dislikes__c</members>
 		<members>Animal__c.Likes__c</members>
 		<members>Animal__c.Photo__c</members>
 		<members>Animal__c.Sex__c</members>
-		<members>Animal__c.Shelter__c</members>
 		<members>Animal__c.Show_image__c</members>
 		<members>Animal__c.Special_needs__c</members>
 		<members>Animal__c.Status__c</members>
 		<members>Animal__c.Weight__c</members>
-		<members>Lost_Animal_Report__c.Animal_Type__c</members>
-		<members>Lost_Animal_Report__c.Date_Lost__c</members>
-		<members>Lost_Animal_Report__c.Description__c</members>
-		<members>Lost_Animal_Report__c.Location__c</members>
-		<members>Lost_Animal_Report__c.Person__c</members>
-		<members>Person__c.Email__c</members>
-		<members>Person__c.Name__c</members>
 		<members>Person__c.Phone_Number__c</members>
 		<members>Person__c.Points__c</members>
 		<members>Person__c.Surname__c</members>
 		<members>Shelter__c.Number_Of_Unadopted_Virtual_Animals__c</members>
+		<members>Shelter__c.Number_Of_Adoptions__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
@@ -53,26 +47,24 @@
 		<members>Lead</members>
 		<members>Lost_Animal_Report__c</members>
 		<members>Order</members>
+		<members>Person__c</members>
 		<members>Product2</members>
 		<members>Shelter__c</members>
-		<members>Person__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
 		<members>Adoption__c</members>
 		<members>Animal__c</members>
 		<members>Lost_Animal_Report__c</members>
-		<members>Shelter__c</members>
 		<members>Person__c</members>
+		<members>SearchAnimal</members>
+		<members>Shelter__c</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
-		<members>Adoption__c.All</members>
-		<members>Animal__c.All</members>
-		<members>Lost_Animal_Report__c.All</members>
-		<members>Shelter__c.All</members>
-		<members>Person__c.All</members>
-		<name>ListView</name>
+		<members>SearchAnimal</members>
+		<members>Shelter_Record_Page</members>
+		<name>FlexiPage</name>
 	</types>
 	<types>
 		<members>Account-Account Layout</members>
@@ -84,10 +76,25 @@
 		<members>Lead-Lead Layout</members>
 		<members>Lost_Animal_Report__c-Lost Animal Report Layout</members>
 		<members>Order-Order Layout</members>
+		<members>Person__c-Person Layout</members>
 		<members>Product2-Product Layout</members>
 		<members>Shelter__c-Shelter Layout</members>
-		<members>Person__c-Person Layout</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>animalCardList</members>
+		<members>map</members>
+		<members>missingAnimals</members>
+		<members>openingHours</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Adoption__c.All</members>
+		<members>Animal__c.All</members>
+		<members>Lost_Animal_Report__c.All</members>
+		<members>Person__c.All</members>
+		<members>Shelter__c.All</members>
+		<name>ListView</name>
 	</types>
 	<types>
 		<members>Admin</members>
@@ -98,5 +105,5 @@
 		<members>Adoption__c.Virtual</members>
 		<name>RecordType</name>
 	</types>
-	<version>58.0</version>
+	<version>60.0</version>
 </Package>

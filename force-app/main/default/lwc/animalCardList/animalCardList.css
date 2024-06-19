@@ -1,0 +1,91 @@
+.combobox-custom 
+{
+    width: 20%; 
+    margin-left: 1rem; 
+}
+
+.filters 
+{
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.animal-cards-container 
+{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.animal-card-wrapper 
+{
+    width: 25%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.animal-card 
+{
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 4px 4px 0 rgba(147, 10, 189, 0.1);
+    height: 19rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.animal-card:first-child 
+{
+    margin-left: 1.5vw; 
+}
+
+.animal-image-container 
+{
+    border-radius: 0.5rem;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.animal-image 
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.animal-details 
+{
+    padding: 1rem 0;
+    text-align: center;
+    color: blueviolet;
+}
+
+.animal-details h2 
+{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.animal-details p 
+{
+    margin-bottom: 0.25rem;
+}
+
+.no-find-result 
+{
+    margin-left: 1.5rem;
+    font-weight: bold;
+}
+.reset-button 
+{
+    margin-top: 1.5rem;
+    margin-left: 1.5vw;
+}
