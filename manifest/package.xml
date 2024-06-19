@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>AdoptionTriggerHelper</members>
 		<members>AnimalClass</members>
 		<members>EmailManager</members>
 		<members>HoursController</members>
@@ -33,6 +34,7 @@
 		<members>Person__c.Phone_Number__c</members>
 		<members>Person__c.Points__c</members>
 		<members>Person__c.Surname__c</members>
+		<members>Shelter__c.Number_Of_Unadopted_Virtual_Animals__c</members>
 		<members>Shelter__c.Number_Of_Adoptions__c</members>
 		<name>CustomField</name>
 	</types>

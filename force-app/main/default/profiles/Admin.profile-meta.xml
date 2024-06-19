@@ -6,6 +6,7 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>AdoptionTriggerHelper</apexClass>
         <apexClass>AnimalClass</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -703,6 +704,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Shelter__c.Number_Of_Unadopted_Virtual_Animals__c</field>
         <field>Shelter__c.Number_Of_Adoptions__c</field>
         <readable>true</readable>
     </fieldPermissions>
